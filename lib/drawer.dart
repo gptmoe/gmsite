@@ -7,10 +7,9 @@ class TheDrawer {
       child: ListView(
         padding: EdgeInsets.zero,
         children: <Widget>[
-          DrawerHeader(
-              child: Container(
-            child: const Text('Menu'),
-          )),
+          const DrawerHeader(
+            child: Text('Menu'),
+          ),
           ListTile(
               leading: IconButton(
                 icon: const Icon(Icons.search),

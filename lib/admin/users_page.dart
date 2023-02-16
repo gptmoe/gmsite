@@ -17,7 +17,7 @@ class UsersPage extends ConsumerWidget {
         },
         child: Scaffold(
           appBar: AdminAppBar.getBar(context, ref),
-          drawer: (MediaQuery.of(context).size.width < WIDE_SCREEN_WIDTH)
+          drawer: (MediaQuery.of(context).size.width < kWideScreenWidth)
               ? TheDrawer.buildDrawer(context)
               : null,
           body: Container(

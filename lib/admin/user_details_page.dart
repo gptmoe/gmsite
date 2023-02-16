@@ -22,9 +22,9 @@ class UserDetailsPage extends ConsumerWidget {
       appBar: //AdminAppBar.getBar(context, ref),
           AppBar(
         title: Text('User Details for $uid'),
-        actions: [ThemeIconButton(), SignOutButton()],
+        actions: const [ThemeIconButton(), SignOutButton()],
       ),
-      drawer: (MediaQuery.of(context).size.width < WIDE_SCREEN_WIDTH)
+      drawer: (MediaQuery.of(context).size.width < kWideScreenWidth)
           ? TheDrawer.buildDrawer(context)
           : null,
       body: Container(

@@ -13,18 +13,18 @@ class AdminAppBar {
   static PreferredSizeWidget getBar(BuildContext context, WidgetRef ref) {
     return AppBar(
       // automaticallyImplyLeading:
-      //     (MediaQuery.of(context).size.width < WIDE_SCREEN_WIDTH)
+      //     (MediaQuery.of(context).size.width < kWideScreenWidth)
       //         ? true
       //         : false,
       // leadingWidth:
-      //     (MediaQuery.of(context).size.width < WIDE_SCREEN_WIDTH) ? null : 100,
+      //     (MediaQuery.of(context).size.width < kWideScreenWidth) ? null : 100,
       // leading: BackButton(onPressed: () => Navigator.of(context).pop()),
       // IconButton(
       //     icon:
 
       //     Icon(Icons.navigate_before),
       //     onPressed: () => Navigator.of(context).pop()),
-      //  (MediaQuery.of(context).size.width < WIDE_SCREEN_WIDTH)
+      //  (MediaQuery.of(context).size.width < kWideScreenWidth)
       //     ? null
       //     :
 
@@ -33,7 +33,7 @@ class AdminAppBar {
       //     child: Text(''),
       //   )
 
-      title: (MediaQuery.of(context).size.width < WIDE_SCREEN_WIDTH)
+      title: (MediaQuery.of(context).size.width < kWideScreenWidth)
           ? null
           : Align(
               child: SizedBox(
@@ -61,12 +61,14 @@ class AdminAppBar {
                       Navigator.of(context).pushNamed(_tabs[index]);
                     },
                   ))),
-      actions: [ThemeIconButton(), SignOutButton()],
+      actions: const [ThemeIconButton(), SignOutButton()],
     );
   }
 }
 
 class ThemeIconButton extends ConsumerWidget {
+  const ThemeIconButton({super.key});
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var isDarkState = ref.watch(themeStateNotifierProvider);
@@ -82,6 +84,8 @@ class ThemeIconButton extends ConsumerWidget {
 }
 
 class SignOutButton extends ConsumerWidget {
+  const SignOutButton({super.key});
+
   @override
   Widget build(BuildContext context, WidgetRef ref) => IconButton(
       onPressed: () {

@@ -17,9 +17,9 @@ class MessageDetailsPage extends ConsumerWidget {
         appBar: //AdminAppBar.getBar(context, ref),
             AppBar(
           title: Text('Message $messageId'),
-          actions: [ThemeIconButton()],
+          actions: const [ThemeIconButton()],
         ),
-        drawer: (MediaQuery.of(context).size.width < WIDE_SCREEN_WIDTH)
+        drawer: (MediaQuery.of(context).size.width < kWideScreenWidth)
             ? TheDrawer.buildDrawer(context)
             : null,
         body: Container(

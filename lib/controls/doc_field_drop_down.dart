@@ -12,8 +12,14 @@ class DocFieldDropDown extends ConsumerWidget {
   final StateNotifierProvider<GenericStateNotifier<String?>, String?> valueNP;
   final List<String> items;
 
-  const DocFieldDropDown(this.docRef, this.field, this.valueNP, this.items,
-      {this.onChanged});
+  const DocFieldDropDown(
+    this.docRef,
+    this.field,
+    this.valueNP,
+    this.items, {
+    super.key,
+    this.onChanged,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) =>

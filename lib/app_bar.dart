@@ -13,18 +13,16 @@ class MyAppBar {
   static PreferredSizeWidget getBar(BuildContext context, WidgetRef ref) {
     return AppBar(
       automaticallyImplyLeading:
-          (MediaQuery.of(context).size.width < WIDE_SCREEN_WIDTH)
-              ? true
-              : false,
+          (MediaQuery.of(context).size.width < kWideScreenWidth) ? true : false,
       leadingWidth:
-          (MediaQuery.of(context).size.width < WIDE_SCREEN_WIDTH) ? null : 100,
-      leading: (MediaQuery.of(context).size.width < WIDE_SCREEN_WIDTH)
+          (MediaQuery.of(context).size.width < kWideScreenWidth) ? null : 100,
+      leading: (MediaQuery.of(context).size.width < kWideScreenWidth)
           ? null
           : const Padding(
               padding: EdgeInsets.all(10),
               child: Text(''),
             ),
-      title: (MediaQuery.of(context).size.width < WIDE_SCREEN_WIDTH)
+      title: (MediaQuery.of(context).size.width < kWideScreenWidth)
           ? null
           : Align(
               child: SizedBox(
@@ -53,7 +51,7 @@ class MyAppBar {
                     },
                   ))),
       actions: [
-        ThemeIconButton(),
+        const ThemeIconButton(),
         IconButton(
             onPressed: () {
               ref.read(isLoggedIn.notifier).value = false;
@@ -67,6 +65,8 @@ class MyAppBar {
 }
 
 class ThemeIconButton extends ConsumerWidget {
+  const ThemeIconButton({super.key});
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var isDarkState = ref.watch(themeStateNotifierProvider);

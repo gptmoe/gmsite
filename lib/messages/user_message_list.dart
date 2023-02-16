@@ -12,8 +12,9 @@ final sortStateNotifierProvider =
 // String uid = FirebaseAuth.instance.currentUser!.uid;
 
 class UserMessageList extends ConsumerWidget {
-  String? uid;
-  UserMessageList(this.uid, {super.key});
+  const UserMessageList(this.uid, {super.key});
+
+  final String? uid;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) => ListView(

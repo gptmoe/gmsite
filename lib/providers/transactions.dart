@@ -69,7 +69,7 @@ final AutoDisposeStreamProviderFamily<List<Map<String, dynamic>>, EntityFilter>
 //     dayTimelineOneMonthCountsSP = StreamProvider.autoDispose
 //         .family<Map<String, dynamic>, DataFilter>((ref, filter) {
 //   // print('dayTimelineCountsStart2EndByFilterSP starts');
-//   // print(' end: ${Jiffy(filter.start).endOf(Units.MONTH).format(DATE_FORMAT)}');
+//   // print(' end: ${Jiffy(filter.start).endOf(Units.MONTH).format(kDateFormat)}');
 
 //   // print(
 //   //     '${Jiffy(filter.start).endOf(Units.MONTH).diff(Jiffy(filter.start), Units.DAY).toInt()}');
@@ -88,12 +88,12 @@ final AutoDisposeStreamProviderFamily<List<Map<String, dynamic>>, EntityFilter>
 //   List<Stream<DocumentSnapshot<Map<String, dynamic>>>> qs = days
 //       .map((day) => FF
 //           .doc(
-//               "org/${opv.org}/projects/${opv.proj}/versions/${opv.ver}/dayTimeline/${idFromFilter(filter)}/${day.format(DATE_FORMAT)}/stat")
+//               "org/${opv.org}/projects/${opv.proj}/versions/${opv.ver}/dayTimeline/${idFromFilter(filter)}/${day.format(kDateFormat)}/stat")
 //           .snapshots())
 //       .toList();
 
 //   // print(
-//   //     'queries: ${qs.length}, from ${days.first.format(DATE_FORMAT)} to ${days.last.format(DATE_FORMAT)} with: ${"org/${opv.org}/projects/${opv.proj}/versions/${opv.ver}/dayTimeline/${idFromFilter(filter)}/${DATE_FORMAT}/stat"}');
+//   //     'queries: ${qs.length}, from ${days.first.format(kDateFormat)} to ${days.last.format(kDateFormat)} with: ${"org/${opv.org}/projects/${opv.proj}/versions/${opv.ver}/dayTimeline/${idFromFilter(filter)}/${kDateFormat}/stat"}');
 
 //   Stream<List<DocumentSnapshot<Map<String, dynamic>>>> res = Rx.combineLatestList(qs);
 

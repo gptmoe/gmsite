@@ -16,7 +16,10 @@ class UserDetails extends ConsumerWidget {
       nameCtrl = TextEditingController(),
       descCtrl = TextEditingController();
 
-  UserDetails(this.entityId);
+  UserDetails(
+    this.entityId, {
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) => entityId == null
