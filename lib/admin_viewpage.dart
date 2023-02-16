@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:gptmoe/admin/user_details.dart';
-import 'package:gptmoe/app_bar.dart';
-import 'package:gptmoe/drawer.dart';
-import 'package:gptmoe/common.dart';
 
 import 'admin/user_details_page.dart';
 import 'admin/users_page.dart';
@@ -35,7 +31,7 @@ class AdminViewWidget extends ConsumerWidget {
           // print('onGenerateRoute: ${settings}');
           // if (settings.name == '/' || settings.name == 'search') {
           if (settings.name == '/' || settings.name == 'clients') {
-            return PageRouteBuilder(pageBuilder: (_, __, ___) => UsersPage());
+            return PageRouteBuilder(pageBuilder: (_, __, ___) => const UsersPage());
           } else if (settings.name == UserDetailsPage.routeName) {
             return PageRouteBuilder(pageBuilder: (_, __, ___) {
               //print('args: ${ModalRoute.of(context)!.settings}');

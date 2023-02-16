@@ -46,8 +46,8 @@ final AutoDisposeStreamProviderFamily<List<Map<String, dynamic>>, EntityFilter>
     entityTrnDailyTotalsSP = StreamProvider.autoDispose
         .family<List<Map<String, dynamic>>, EntityFilter>((ref, filter) {
   return ref.watch(entityTrnByDaysSP(filter)).when(
-      loading: () => Stream.empty(),
-      error: (e, s) => Stream.empty(),
+      loading: () => const Stream.empty(),
+      error: (e, s) => const Stream.empty(),
       data: (d) {
         print(
             'day: ${d.map((day) => day.map((trn) => trn.data()!['amount']))}');
@@ -59,7 +59,7 @@ final AutoDisposeStreamProviderFamily<List<Map<String, dynamic>>, EntityFilter>
                     'count': previousValue['count'] + 1,
                     'amount': previousValue['amount'] + element.get('amount'),
                   });
-          print('day: ${fold}');
+          print('day: $fold');
           return fold;
         }).toList());
       });

@@ -10,20 +10,20 @@ class MessageDetailsPage extends ConsumerWidget {
 
   final String messageId;
 
-  MessageDetailsPage(this.messageId, {super.key});
+  const MessageDetailsPage(this.messageId, {super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) => Scaffold(
         appBar: //AdminAppBar.getBar(context, ref),
             AppBar(
-          title: Text('Message ${messageId}'),
+          title: Text('Message $messageId'),
           actions: [ThemeIconButton()],
         ),
         drawer: (MediaQuery.of(context).size.width < WIDE_SCREEN_WIDTH)
             ? TheDrawer.buildDrawer(context)
             : null,
         body: Container(
-            margin: EdgeInsets.all(20),
+            margin: const EdgeInsets.all(20),
             alignment: Alignment.center,
             child: Row(
               mainAxisSize: MainAxisSize.max,

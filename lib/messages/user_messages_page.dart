@@ -72,7 +72,7 @@ class UserMessagesPage extends ConsumerWidget {
   }
 
   dynamic fetchAlbum(String url) async {
-    print('fetching ${url}');
+    print('fetching $url');
     final response = await http.get(Uri.parse(url));
 
     if (response.statusCode == 200) {

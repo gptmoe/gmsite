@@ -7,7 +7,7 @@ import 'package:gptmoe/drawer.dart';
 import '../admin_app_bar.dart';
 
 class UsersPage extends ConsumerWidget {
-  UsersPage({super.key});
+  const UsersPage({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -21,7 +21,7 @@ class UsersPage extends ConsumerWidget {
               ? TheDrawer.buildDrawer(context)
               : null,
           body: Container(
-              margin: EdgeInsets.all(20),
+              margin: const EdgeInsets.all(20),
               alignment: Alignment.center,
               child: Row(
                 mainAxisSize: MainAxisSize.max,

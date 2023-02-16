@@ -41,7 +41,7 @@ class AdminAppBar {
                   child: TabBar(
                     tabs: _tabs
                         .map((t) => Tab(
-                            iconMargin: EdgeInsets.all(0),
+                            iconMargin: const EdgeInsets.all(0),
                             child:
                                 // GestureDetector(
                                 //     behavior: HitTestBehavior.translucent,
@@ -50,7 +50,7 @@ class AdminAppBar {
                                 Text(t.toUpperCase(),
                                     overflow: TextOverflow.fade,
                                     softWrap: false,
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                         color:
                                             // Theme.of(context).brightness == Brightness.light
                                             //     ? Color(DARK_GREY)
@@ -88,5 +88,5 @@ class SignOutButton extends ConsumerWidget {
         ref.read(isLoggedIn.notifier).value = false;
         FirebaseAuth.instance.signOut();
       },
-      icon: Icon(Icons.exit_to_app));
+      icon: const Icon(Icons.exit_to_app));
 }

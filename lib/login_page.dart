@@ -1,6 +1,5 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
-import 'package:gptmoe/admin_viewpage.dart';
 import 'package:login/login.dart';
 
 class LoginPage extends ConsumerWidget {
@@ -8,7 +7,7 @@ class LoginPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    return Scaffold(
+    return const Scaffold(
         body: LoginScreen(
       screenTitle: "Log in",
       loginOptions: {

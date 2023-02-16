@@ -20,7 +20,7 @@ class MyAppBar {
           (MediaQuery.of(context).size.width < WIDE_SCREEN_WIDTH) ? null : 100,
       leading: (MediaQuery.of(context).size.width < WIDE_SCREEN_WIDTH)
           ? null
-          : Padding(
+          : const Padding(
               padding: EdgeInsets.all(10),
               child: Text(''),
             ),
@@ -32,7 +32,7 @@ class MyAppBar {
                   child: TabBar(
                     tabs: _tabs
                         .map((t) => Tab(
-                            iconMargin: EdgeInsets.all(0),
+                            iconMargin: const EdgeInsets.all(0),
                             child:
                                 // GestureDetector(
                                 //     behavior: HitTestBehavior.translucent,
@@ -41,7 +41,7 @@ class MyAppBar {
                                 Text(t.toUpperCase(),
                                     overflow: TextOverflow.fade,
                                     softWrap: false,
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                         color:
                                             // Theme.of(context).brightness == Brightness.light
                                             //     ? Color(DARK_GREY)
@@ -60,7 +60,7 @@ class MyAppBar {
               FirebaseAuth.instance.signOut();
               // print("Signed out");
             },
-            icon: Icon(Icons.exit_to_app))
+            icon: const Icon(Icons.exit_to_app))
       ],
     );
   }

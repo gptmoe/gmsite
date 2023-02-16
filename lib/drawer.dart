@@ -9,11 +9,11 @@ class TheDrawer {
         children: <Widget>[
           DrawerHeader(
               child: Container(
-            child: Text('Menu'),
+            child: const Text('Menu'),
           )),
           ListTile(
               leading: IconButton(
-                icon: Icon(Icons.search),
+                icon: const Icon(Icons.search),
                 onPressed: () => Scaffold.of(context).openDrawer(),
               ),
               title: const Text('Search'),
@@ -27,7 +27,7 @@ class TheDrawer {
               }),
           ListTile(
               leading: IconButton(
-                icon: Icon(Icons.view_list),
+                icon: const Icon(Icons.view_list),
                 onPressed: () => Scaffold.of(context).openDrawer(),
               ),
               title: const Text('Lists'),
@@ -36,7 +36,7 @@ class TheDrawer {
                 Navigator.push(context, MaterialPageRoute(
                   builder: (context) {
                     //return ResumesPage();
-                    return Text('hi');
+                    return const Text('hi');
                     // return ListsPage();
                   },
                 ));

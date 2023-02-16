@@ -41,7 +41,7 @@ class QueryParam extends Equatable {
   List<Object?> get props => [
         field,
         ...params.entries
-            .map((e) => e.key.toString() + ":" + e.value.toString())
+            .map((e) => "${e.key}:${e.value}")
             .toList()
       ];
 }
@@ -95,13 +95,15 @@ final AutoDisposeStreamProviderFamily<QuerySnapshot<Map<String, dynamic>>,
   Query<Map<String, dynamic>> q =
       FirebaseFirestore.instance.collection(filter.path);
 
-  if (filter.queries != null)
-    filter.queries!.forEach((query) {
+  if (filter.queries != null) {
+    for (var query in filter.queries!) {
       q = Function.apply(q.where, [query.field], query.params);
-    });
+    }
+  }
 
-  if (filter.orderBy != null)
+  if (filter.orderBy != null) {
     q = q.orderBy(filter.orderBy!, descending: filter.isOrderDesc ?? false);
+  }
 
   if (filter.limit != null) q = q.limit(filter.limit!);
 

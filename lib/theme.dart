@@ -21,7 +21,7 @@ final lightTheme = ThemeData(
 final darkTheme = ThemeData(
     scaffoldBackgroundColor: Colors.black,
     primaryColor: Colors.white,
-    backgroundColor: Color(0xff181a1b),
+    backgroundColor: const Color(0xff181a1b),
     colorScheme: const ColorScheme(
         primary: Color(0xffcdcbc9),
         secondary: Colors.grey,
@@ -38,20 +38,20 @@ final darkTheme = ThemeData(
 //style static class for login_page
 class LoginStyle {
   static ButtonStyle buttonStyle = ButtonStyle(
-      minimumSize: MaterialStateProperty.all(Size(350, 50)),
-      maximumSize: MaterialStateProperty.all(Size(350, 50)),
+      minimumSize: MaterialStateProperty.all(const Size(350, 50)),
+      maximumSize: MaterialStateProperty.all(const Size(350, 50)),
       backgroundColor: MaterialStateProperty.all(Colors.white));
-  static TextStyle buttontextStyle = TextStyle(
+  static TextStyle buttontextStyle = const TextStyle(
       fontSize: 18.0, color: Colors.black, fontWeight: FontWeight.w500);
   static TextStyle titleStyle =
-      TextStyle(fontWeight: FontWeight.bold, fontSize: 24);
-  static TextStyle linkStyle = TextStyle(fontSize: 18, color: Colors.blueGrey);
-  static BoxDecoration containerStyle = BoxDecoration(
+      const TextStyle(fontWeight: FontWeight.bold, fontSize: 24);
+  static TextStyle linkStyle = const TextStyle(fontSize: 18, color: Colors.blueGrey);
+  static BoxDecoration containerStyle = const BoxDecoration(
       border: Border(
           right: BorderSide(
     color: Colors.grey,
   )));
-  static BoxDecoration seperatedLine = BoxDecoration(
+  static BoxDecoration seperatedLine = const BoxDecoration(
       border: Border(
           top: BorderSide(
     color: Color.fromARGB(255, 208, 208, 208),

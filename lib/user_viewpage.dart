@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gptmoe/messages/message_details_page.dart';
 import 'package:gptmoe/messages/user_messages_page.dart';
 
-import 'admin_viewpage.dart';
 
 class UserViewWidget extends StatelessWidget {
   const UserViewWidget({super.key});
@@ -19,8 +17,9 @@ class UserViewWidget extends StatelessWidget {
             if (settings.name == '/' || settings.name == 'convo') {
               return PageRouteBuilder(
                   pageBuilder: (_, __, ___) => UserMessagesPage());
-            } else
+            } else {
               throw 'no page to show';
+            }
           },
         ));
   }
