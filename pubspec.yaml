@@ -44,10 +44,9 @@ dependencies:
   jiffy: ^5.0.0
   rxdart: ^0.27.4
   http: ^0.13.5
-  login:
+  flutter_firebase_auth:
     git: 
-      url: https://github.com/amlcloud/flutter-lib.git
-      path: login
+      url: https://github.com/amlcloud/flutter-firebase-auth.git
 
 dev_dependencies:
   flutter_test:

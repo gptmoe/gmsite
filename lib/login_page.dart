@@ -1,7 +1,7 @@
+import 'package:flutter_firebase_auth/login_screen.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
 import 'package:gptmoe/admin_viewpage.dart';
-import 'package:login/login.dart';
 
 class LoginPage extends ConsumerWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -9,17 +9,13 @@ class LoginPage extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-        body: LoginScreen(
-      screenTitle: "Log in",
-      loginOptions: {
-        "loginGitHub": true,
-        "loginGoogle": true,
-        "loginEmail": true,
-        "loginSSO": true,
-        "loginAnonymous": true,
-        "signupOption": true,
-      },
-      mainTitle: "GPT MOE",
-    ));
+        body: LoginScreen("GPT Moe", "Log in", {
+      "loginGitHub": true,
+      "loginGoogle": true,
+      "loginEmail": true,
+      "loginSSO": true,
+      "loginAnonymous": true,
+      "signupOption": true,
+    }));
   }
 }
