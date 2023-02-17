@@ -8,7 +8,6 @@ import 'package:gptmoe/state/generic_state_notifier.dart';
 import 'package:gptmoe/state/theme_state_notifier.dart';
 import 'package:gptmoe/theme.dart';
 import 'firebase_options.dart';
-import 'package:gptmoe/messages/user_messages_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -17,7 +16,7 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  runApp(ProviderScope(child: MainApp()));
+  runApp(const ProviderScope(child: MainApp()));
 }
 
 class MainApp extends ConsumerWidget {
@@ -33,7 +32,7 @@ class MainApp extends ConsumerWidget {
       themeMode: isDarkTheme ? ThemeMode.dark : ThemeMode.light,
       theme: lightTheme,
       darkTheme: darkTheme,
-      home: TheApp(),
+      home: const TheApp(),
     );
   }
 }
@@ -72,15 +71,15 @@ class TheAppState extends ConsumerState<TheApp> {
     if (ref.watch(isLoading)) {
       return Center(
         child: Container(
-          alignment: Alignment(0.0, 0.0),
-          child: CircularProgressIndicator(),
+          alignment: const Alignment(0.0, 0.0),
+          child: const CircularProgressIndicator(),
         ),
       );
     } else {
       return Scaffold(
           body: ref.watch(isLoggedIn) == false
-              ? LoginPage()
-              : ChooseUserViewWidget());
+              ? const LoginPage()
+              : const ChooseUserViewWidget());
     }
   }
 }

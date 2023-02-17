@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gptmoe/messages/user_message_item.dart';
@@ -13,8 +12,9 @@ final sortStateNotifierProvider =
 // String uid = FirebaseAuth.instance.currentUser!.uid;
 
 class UserMessageList extends ConsumerWidget {
-  String? uid;
-  UserMessageList(this.uid, {super.key});
+  const UserMessageList(this.uid, {super.key});
+
+  final String? uid;
 
   @override
   Widget build(BuildContext context, WidgetRef ref) => ListView(

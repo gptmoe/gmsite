@@ -1,6 +1,6 @@
 import 'package:jiffy/jiffy.dart';
 
-const DATE_FORMAT = 'yyyy-MM-dd';
+const kDateFormat = 'yyyy-MM-dd';
 
 List<Jiffy> generateWeeks(Jiffy start, Jiffy end) {
   List<Jiffy> list = [];
@@ -41,4 +41,4 @@ List<Jiffy> generateDays(Jiffy start, Jiffy end) {
   return list;
 }
 
-const WIDE_SCREEN_WIDTH = 600;
+const kWideScreenWidth = 600;

@@ -1,4 +1,3 @@
-import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +6,6 @@ import 'package:gptmoe/providers/firestore.dart';
 import 'package:gptmoe/messages/message_details_page.dart';
 
 import '../admin_viewpage.dart';
-import '../controls/doc_field_text_edit.dart';
 
 class UserMessageItem extends ConsumerWidget {
   final DocumentReference searchRef;
@@ -39,14 +37,14 @@ class UserMessageItem extends ConsumerWidget {
                     ],
                   ),
                   trailing: IconButton(
-                    icon: Icon(Icons.more_horiz),
+                    icon: const Icon(Icons.more_horiz),
                     onPressed: () {
                       showDialog(
                           context: context,
                           builder: (BuildContext context) {
                             return AlertDialog(
                               scrollable: true,
-                              title: Text('details'),
+                              title: const Text('details'),
                               content: Padding(
                                   padding: const EdgeInsets.all(8.0),
                                   child: Text(
@@ -54,7 +52,7 @@ class UserMessageItem extends ConsumerWidget {
                                   )),
                               actions: [
                                 TextButton(
-                                    child: Text("Cancel"),
+                                    child: const Text("Cancel"),
                                     onPressed: () {
                                       Navigator.of(context).pop();
                                     })

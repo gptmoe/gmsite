@@ -9,7 +9,7 @@ class Sandbox extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.all(Radius.circular(8)),
+            borderRadius: const BorderRadius.all(Radius.circular(8)),
             border: Border.all(
               color: Colors.grey,
             )),
@@ -22,7 +22,7 @@ class Sandbox extends StatelessWidget {
                   FirebaseFirestore.instance.doc('/dev/serge/text_edit/1'),
                   'the_field'),
             ),
-            ListTile(
+            const ListTile(
               title: Text('Text Widget 1'),
             )
           ],

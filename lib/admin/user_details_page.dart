@@ -5,14 +5,13 @@ import 'package:gptmoe/common.dart';
 import 'package:gptmoe/drawer.dart';
 
 import '../admin_app_bar.dart';
-import '../admin_viewpage.dart';
 
 class UserDetailsPage extends ConsumerWidget {
   static const routeName = '/client';
 
   final String uid;
 
-  UserDetailsPage(this.uid, {super.key});
+  const UserDetailsPage(this.uid, {super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -22,14 +21,14 @@ class UserDetailsPage extends ConsumerWidget {
     return Scaffold(
       appBar: //AdminAppBar.getBar(context, ref),
           AppBar(
-        title: Text('User Details for ${uid}'),
-        actions: [ThemeIconButton(), SignOutButton()],
+        title: Text('User Details for $uid'),
+        actions: const [ThemeIconButton(), SignOutButton()],
       ),
-      drawer: (MediaQuery.of(context).size.width < WIDE_SCREEN_WIDTH)
+      drawer: (MediaQuery.of(context).size.width < kWideScreenWidth)
           ? TheDrawer.buildDrawer(context)
           : null,
       body: Container(
-          margin: EdgeInsets.all(20),
+          margin: const EdgeInsets.all(20),
           alignment: Alignment.center,
           child: Row(
             mainAxisSize: MainAxisSize.max,

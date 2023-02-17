@@ -18,13 +18,16 @@ final activeBatch =
 final firestoreInstance = FirebaseFirestore.instance;
 
 class UserMessagesPage extends ConsumerWidget {
+  UserMessagesPage({super.key});
+
   final TextEditingController searchCtrl = TextEditingController();
-  String uid = FirebaseAuth.instance.currentUser!.uid;
+  final String uid = FirebaseAuth.instance.currentUser!.uid;
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: MyAppBar.getBar(context, ref),
-      drawer: (MediaQuery.of(context).size.width < WIDE_SCREEN_WIDTH)
+      drawer: (MediaQuery.of(context).size.width < kWideScreenWidth)
           ? TheDrawer.buildDrawer(context)
           : null,
       body: Container(
@@ -72,7 +75,7 @@ class UserMessagesPage extends ConsumerWidget {
   }
 
   dynamic fetchAlbum(String url) async {
-    print('fetching ${url}');
+    print('fetching $url');
     final response = await http.get(Uri.parse(url));
 
     if (response.statusCode == 200) {

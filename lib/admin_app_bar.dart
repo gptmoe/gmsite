@@ -13,18 +13,18 @@ class AdminAppBar {
   static PreferredSizeWidget getBar(BuildContext context, WidgetRef ref) {
     return AppBar(
       // automaticallyImplyLeading:
-      //     (MediaQuery.of(context).size.width < WIDE_SCREEN_WIDTH)
+      //     (MediaQuery.of(context).size.width < kWideScreenWidth)
       //         ? true
       //         : false,
       // leadingWidth:
-      //     (MediaQuery.of(context).size.width < WIDE_SCREEN_WIDTH) ? null : 100,
+      //     (MediaQuery.of(context).size.width < kWideScreenWidth) ? null : 100,
       // leading: BackButton(onPressed: () => Navigator.of(context).pop()),
       // IconButton(
       //     icon:
 
       //     Icon(Icons.navigate_before),
       //     onPressed: () => Navigator.of(context).pop()),
-      //  (MediaQuery.of(context).size.width < WIDE_SCREEN_WIDTH)
+      //  (MediaQuery.of(context).size.width < kWideScreenWidth)
       //     ? null
       //     :
 
@@ -33,7 +33,7 @@ class AdminAppBar {
       //     child: Text(''),
       //   )
 
-      title: (MediaQuery.of(context).size.width < WIDE_SCREEN_WIDTH)
+      title: (MediaQuery.of(context).size.width < kWideScreenWidth)
           ? null
           : Align(
               child: SizedBox(
@@ -41,7 +41,7 @@ class AdminAppBar {
                   child: TabBar(
                     tabs: _tabs
                         .map((t) => Tab(
-                            iconMargin: EdgeInsets.all(0),
+                            iconMargin: const EdgeInsets.all(0),
                             child:
                                 // GestureDetector(
                                 //     behavior: HitTestBehavior.translucent,
@@ -50,7 +50,7 @@ class AdminAppBar {
                                 Text(t.toUpperCase(),
                                     overflow: TextOverflow.fade,
                                     softWrap: false,
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                         color:
                                             // Theme.of(context).brightness == Brightness.light
                                             //     ? Color(DARK_GREY)
@@ -61,12 +61,14 @@ class AdminAppBar {
                       Navigator.of(context).pushNamed(_tabs[index]);
                     },
                   ))),
-      actions: [ThemeIconButton(), SignOutButton()],
+      actions: const [ThemeIconButton(), SignOutButton()],
     );
   }
 }
 
 class ThemeIconButton extends ConsumerWidget {
+  const ThemeIconButton({super.key});
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var isDarkState = ref.watch(themeStateNotifierProvider);
@@ -82,11 +84,13 @@ class ThemeIconButton extends ConsumerWidget {
 }
 
 class SignOutButton extends ConsumerWidget {
+  const SignOutButton({super.key});
+
   @override
   Widget build(BuildContext context, WidgetRef ref) => IconButton(
       onPressed: () {
         ref.read(isLoggedIn.notifier).value = false;
         FirebaseAuth.instance.signOut();
       },
-      icon: Icon(Icons.exit_to_app));
+      icon: const Icon(Icons.exit_to_app));
 }

@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:gptmoe/providers/firestore.dart';
 
 class DocFieldTextEdit2 extends ConsumerStatefulWidget {
   final DocumentReference<Map<String, dynamic>> docRef;
@@ -90,7 +89,7 @@ class DocFieldTextEditState2 extends ConsumerState<DocFieldTextEdit2> {
         if (descSaveTimer != null && descSaveTimer!.isActive) {
           descSaveTimer!.cancel();
         }
-        descSaveTimer = Timer(Duration(milliseconds: 200), () {
+        descSaveTimer = Timer(const Duration(milliseconds: 200), () {
           // if (docSnapshot.data() == null ||
           //     v != docSnapshot.data()![widget.field]) {
           Map<String, dynamic> map = {};

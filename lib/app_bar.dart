@@ -13,18 +13,16 @@ class MyAppBar {
   static PreferredSizeWidget getBar(BuildContext context, WidgetRef ref) {
     return AppBar(
       automaticallyImplyLeading:
-          (MediaQuery.of(context).size.width < WIDE_SCREEN_WIDTH)
-              ? true
-              : false,
+          (MediaQuery.of(context).size.width < kWideScreenWidth) ? true : false,
       leadingWidth:
-          (MediaQuery.of(context).size.width < WIDE_SCREEN_WIDTH) ? null : 100,
-      leading: (MediaQuery.of(context).size.width < WIDE_SCREEN_WIDTH)
+          (MediaQuery.of(context).size.width < kWideScreenWidth) ? null : 100,
+      leading: (MediaQuery.of(context).size.width < kWideScreenWidth)
           ? null
-          : Padding(
+          : const Padding(
               padding: EdgeInsets.all(10),
               child: Text(''),
             ),
-      title: (MediaQuery.of(context).size.width < WIDE_SCREEN_WIDTH)
+      title: (MediaQuery.of(context).size.width < kWideScreenWidth)
           ? null
           : Align(
               child: SizedBox(
@@ -32,7 +30,7 @@ class MyAppBar {
                   child: TabBar(
                     tabs: _tabs
                         .map((t) => Tab(
-                            iconMargin: EdgeInsets.all(0),
+                            iconMargin: const EdgeInsets.all(0),
                             child:
                                 // GestureDetector(
                                 //     behavior: HitTestBehavior.translucent,
@@ -41,7 +39,7 @@ class MyAppBar {
                                 Text(t.toUpperCase(),
                                     overflow: TextOverflow.fade,
                                     softWrap: false,
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                         color:
                                             // Theme.of(context).brightness == Brightness.light
                                             //     ? Color(DARK_GREY)
@@ -53,20 +51,22 @@ class MyAppBar {
                     },
                   ))),
       actions: [
-        ThemeIconButton(),
+        const ThemeIconButton(),
         IconButton(
             onPressed: () {
               ref.read(isLoggedIn.notifier).value = false;
               FirebaseAuth.instance.signOut();
               // print("Signed out");
             },
-            icon: Icon(Icons.exit_to_app))
+            icon: const Icon(Icons.exit_to_app))
       ],
     );
   }
 }
 
 class ThemeIconButton extends ConsumerWidget {
+  const ThemeIconButton({super.key});
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     var isDarkState = ref.watch(themeStateNotifierProvider);
