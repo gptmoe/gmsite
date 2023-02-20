@@ -37,9 +37,11 @@ class MainApp extends ConsumerWidget {
   }
 }
 
-final isLoggedIn = StateNotifierProvider<GenericStateNotifier<bool>, bool>((ref) => GenericStateNotifier<bool>(false));
+final isLoggedIn = StateNotifierProvider<GenericStateNotifier<bool>, bool>(
+    (ref) => GenericStateNotifier<bool>(false));
 
-final isLoading = StateNotifierProvider<GenericStateNotifier<bool>, bool>((ref) => GenericStateNotifier<bool>(false));
+final isLoading = StateNotifierProvider<GenericStateNotifier<bool>, bool>(
+    (ref) => GenericStateNotifier<bool>(false));
 
 class TheApp extends ConsumerStatefulWidget {
   const TheApp({Key? key}) : super(key: key);
@@ -74,7 +76,10 @@ class TheAppState extends ConsumerState<TheApp> {
         ),
       );
     } else {
-      return Scaffold(body: ref.watch(isLoggedIn) == false ? const LoginPage() : const ChooseUserViewWidget());
+      return Scaffold(
+          body: ref.watch(isLoggedIn) == false
+              ? const LoginPage()
+              : const ChooseUserViewWidget());
     }
   }
 }

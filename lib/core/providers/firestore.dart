@@ -38,12 +38,8 @@ class QueryParam extends Equatable {
   );
 
   @override
-  List<Object?> get props => [
-        field,
-        ...params.entries
-            .map((e) => "${e.key}:${e.value}")
-            .toList()
-      ];
+  List<Object?> get props =>
+      [field, ...params.entries.map((e) => "${e.key}:${e.value}").toList()];
 }
 
 /// Filter for collection when listening to [filteredColSP]
