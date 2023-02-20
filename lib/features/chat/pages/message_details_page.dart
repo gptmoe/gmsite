@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../../resources/widgets/app_bar.dart';
-import '../../../core/utils/common.dart';
+import '../../../core/utils/date_utils.dart';
 import '../../../resources/widgets/drawer.dart';
 
 class MessageDetailsPage extends ConsumerWidget {

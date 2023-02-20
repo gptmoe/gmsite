@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gptmoe/main.dart';
 import 'package:gptmoe/core/utils/state/theme_state_notifier.dart';
-import 'package:gptmoe/core/utils/common.dart';
+import 'package:gptmoe/core/utils/date_utils.dart';
 
 class AdminAppBar {
   static final List<String> _tabs = [
@@ -77,7 +77,9 @@ class ThemeIconButton extends ConsumerWidget {
         onPressed: () {
           ref.read(themeStateNotifierProvider.notifier).changeTheme();
         },
-        icon: Icon(isDarkState == true ? Icons.nightlight : Icons.nightlight_outlined));
+        icon: Icon(isDarkState == true
+            ? Icons.nightlight
+            : Icons.nightlight_outlined));
   }
 }
 
