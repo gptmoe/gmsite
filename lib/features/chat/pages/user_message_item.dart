@@ -1,11 +1,10 @@
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:gptmoe/providers/firestore.dart';
-import 'package:gptmoe/messages/message_details_page.dart';
+import 'package:gptmoe/features/chat/pages/message_details_page.dart';
 
-import '../admin_viewpage.dart';
+import '../../../core/providers/firestore.dart';
+import '../../admin/pages/admin_viewpage.dart';
 
 class UserMessageItem extends ConsumerWidget {
   final DocumentReference searchRef;

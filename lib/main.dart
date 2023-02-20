@@ -2,11 +2,11 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:gptmoe/choose_userview.dart';
-import 'package:gptmoe/login_page.dart';
-import 'package:gptmoe/state/generic_state_notifier.dart';
-import 'package:gptmoe/state/theme_state_notifier.dart';
-import 'package:gptmoe/theme.dart';
+import 'package:gptmoe/features/admin/widgets/choose_userview.dart';
+import 'package:gptmoe/features/login/pages/login_page.dart';
+import 'package:gptmoe/core/utils/state/generic_state_notifier.dart';
+import 'package:gptmoe/core/utils/state/theme_state_notifier.dart';
+import 'package:gptmoe/resources/themes/theme.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -37,11 +37,9 @@ class MainApp extends ConsumerWidget {
   }
 }
 
-final isLoggedIn = StateNotifierProvider<GenericStateNotifier<bool>, bool>(
-    (ref) => GenericStateNotifier<bool>(false));
+final isLoggedIn = StateNotifierProvider<GenericStateNotifier<bool>, bool>((ref) => GenericStateNotifier<bool>(false));
 
-final isLoading = StateNotifierProvider<GenericStateNotifier<bool>, bool>(
-    (ref) => GenericStateNotifier<bool>(false));
+final isLoading = StateNotifierProvider<GenericStateNotifier<bool>, bool>((ref) => GenericStateNotifier<bool>(false));
 
 class TheApp extends ConsumerStatefulWidget {
   const TheApp({Key? key}) : super(key: key);
@@ -76,10 +74,7 @@ class TheAppState extends ConsumerState<TheApp> {
         ),
       );
     } else {
-      return Scaffold(
-          body: ref.watch(isLoggedIn) == false
-              ? const LoginPage()
-              : const ChooseUserViewWidget());
+      return Scaffold(body: ref.watch(isLoggedIn) == false ? const LoginPage() : const ChooseUserViewWidget());
     }
   }
 }

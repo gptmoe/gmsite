@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../app_bar.dart';
-import '../common.dart';
-import '../drawer.dart';
+import '../../../resources/widgets/app_bar.dart';
+import '../../../core/utils/common.dart';
+import '../../../resources/widgets/drawer.dart';
 
 class MessageDetailsPage extends ConsumerWidget {
   static const routeName = '/message';

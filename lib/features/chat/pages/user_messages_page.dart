@@ -4,11 +4,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:gptmoe/app_bar.dart';
-import 'package:gptmoe/common.dart';
-import 'package:gptmoe/state/generic_state_notifier.dart';
-import 'package:gptmoe/drawer.dart';
-import 'package:gptmoe/messages/user_message_list.dart';
+import 'package:gptmoe/resources/widgets/app_bar.dart';
+import 'package:gptmoe/core/utils/common.dart';
+import 'package:gptmoe/core/utils/state/generic_state_notifier.dart';
+import 'package:gptmoe/resources/widgets/drawer.dart';
+import 'package:gptmoe/features/chat/pages/user_message_list.dart';
 import 'package:http/http.dart' as http;
 
 final activeBatch =

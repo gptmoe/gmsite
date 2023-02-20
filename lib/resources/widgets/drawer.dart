@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gptmoe/messages/user_messages_page.dart';
+import 'package:gptmoe/features/chat/pages/user_messages_page.dart';
 
 class TheDrawer {
   static Widget buildDrawer(BuildContext context) {

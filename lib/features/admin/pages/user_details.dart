@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:gptmoe/providers/firestore.dart';
-import 'package:gptmoe/state/generic_state_notifier.dart';
+import 'package:gptmoe/core/utils/state/generic_state_notifier.dart';
 
-import '../messages/user_message_list.dart';
+import '../../../core/providers/firestore.dart';
+import '../../chat/pages/user_message_list.dart';
 
 final activeUser =
     StateNotifierProvider<GenericStateNotifier<String?>, String?>(

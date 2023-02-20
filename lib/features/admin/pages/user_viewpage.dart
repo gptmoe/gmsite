@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:gptmoe/messages/user_messages_page.dart';
-
+import 'package:gptmoe/features/chat/pages/user_messages_page.dart';
 
 class UserViewWidget extends StatelessWidget {
   const UserViewWidget({super.key});

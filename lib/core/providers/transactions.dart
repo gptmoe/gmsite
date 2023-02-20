@@ -3,7 +3,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:jiffy/jiffy.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:gptmoe/common.dart';
+import 'package:gptmoe/core/utils/common.dart';
 
 class EntityFilter extends Equatable {
   final DateTime start, end;
@@ -16,22 +16,18 @@ class EntityFilter extends Equatable {
   );
 
   @override
-  List<Object?> get props =>
-      [start.toIso8601String(), end.toIso8601String(), entity];
+  List<Object?> get props => [start.toIso8601String(), end.toIso8601String(), entity];
 }
 
-final AutoDisposeStreamProviderFamily<
-        List<List<DocumentSnapshot<Map<String, dynamic>>>>, EntityFilter>
-    entityTrnByDaysSP = StreamProvider.autoDispose.family<
-        List<List<DocumentSnapshot<Map<String, dynamic>>>>,
-        EntityFilter>((ref, filter) {
+final AutoDisposeStreamProviderFamily<List<List<DocumentSnapshot<Map<String, dynamic>>>>, EntityFilter>
+    entityTrnByDaysSP =
+    StreamProvider.autoDispose.family<List<List<DocumentSnapshot<Map<String, dynamic>>>>, EntityFilter>((ref, filter) {
   List<Stream<QuerySnapshot<Map<String, dynamic>>>> qs = [];
 
   final days = generateDays(Jiffy(filter.start), Jiffy(filter.end));
 
   for (var day in days) {
-    Query<Map<String, dynamic>> q = FirebaseFirestore.instance
-        .collection("entity/${filter.entity}/transaction");
+    Query<Map<String, dynamic>> q = FirebaseFirestore.instance.collection("entity/${filter.entity}/transaction");
 
     q = q.where('day', isEqualTo: day.format('yyyy-MM-dd'));
 
@@ -42,15 +38,13 @@ final AutoDisposeStreamProviderFamily<
       .map((event) => event.fold([], (v, el) => v + [el.docs]));
 });
 
-final AutoDisposeStreamProviderFamily<List<Map<String, dynamic>>, EntityFilter>
-    entityTrnDailyTotalsSP = StreamProvider.autoDispose
-        .family<List<Map<String, dynamic>>, EntityFilter>((ref, filter) {
+final AutoDisposeStreamProviderFamily<List<Map<String, dynamic>>, EntityFilter> entityTrnDailyTotalsSP =
+    StreamProvider.autoDispose.family<List<Map<String, dynamic>>, EntityFilter>((ref, filter) {
   return ref.watch(entityTrnByDaysSP(filter)).when(
       loading: () => const Stream.empty(),
       error: (e, s) => const Stream.empty(),
       data: (d) {
-        print(
-            'day: ${d.map((day) => day.map((trn) => trn.data()!['amount']))}');
+        print('day: ${d.map((day) => day.map((trn) => trn.data()!['amount']))}');
         return //d.map((da) => {'count': da.length}).toList();
             Stream.value(d.map((day) {
           var fold = day.fold<Map<String, dynamic>>(
