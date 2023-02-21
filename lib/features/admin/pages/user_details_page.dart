@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:gptmoe/admin/user_details.dart';
-import 'package:gptmoe/common.dart';
-import 'package:gptmoe/drawer.dart';
+import 'package:gptmoe/core/utils/date_utils.dart';
+import 'package:gptmoe/features/admin/pages/user_details.dart';
+import 'package:gptmoe/resources/widgets/drawer.dart';
 
-import '../admin_app_bar.dart';
+import '../widgets/admin_app_bar.dart';
 
 class UserDetailsPage extends ConsumerWidget {
   static const routeName = '/client';

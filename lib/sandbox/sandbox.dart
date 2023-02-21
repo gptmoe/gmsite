@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:gptmoe/controls/doc_field_text_edit.dart';
+import 'package:gptmoe/resources/widgets/controls/doc_field_text_edit.dart';
 
 class Sandbox extends StatelessWidget {
   const Sandbox({Key? key}) : super(key: key);

@@ -2,37 +2,26 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:gptmoe/main.dart';
-import 'package:gptmoe/state/theme_state_notifier.dart';
-import 'package:gptmoe/common.dart';
+import 'package:gptmoe/core/utils/state/theme_state_notifier.dart';
+import 'package:gptmoe/core/utils/date_utils.dart';
 
-class AdminAppBar {
+class MyAppBar {
   static final List<String> _tabs = [
-    'clients',
+    'convo',
   ];
 
   static PreferredSizeWidget getBar(BuildContext context, WidgetRef ref) {
     return AppBar(
-      // automaticallyImplyLeading:
-      //     (MediaQuery.of(context).size.width < kWideScreenWidth)
-      //         ? true
-      //         : false,
-      // leadingWidth:
-      //     (MediaQuery.of(context).size.width < kWideScreenWidth) ? null : 100,
-      // leading: BackButton(onPressed: () => Navigator.of(context).pop()),
-      // IconButton(
-      //     icon:
-
-      //     Icon(Icons.navigate_before),
-      //     onPressed: () => Navigator.of(context).pop()),
-      //  (MediaQuery.of(context).size.width < kWideScreenWidth)
-      //     ? null
-      //     :
-
-      // Padding(
-      //     padding: EdgeInsets.all(10),
-      //     child: Text(''),
-      //   )
-
+      automaticallyImplyLeading:
+          (MediaQuery.of(context).size.width < kWideScreenWidth) ? true : false,
+      leadingWidth:
+          (MediaQuery.of(context).size.width < kWideScreenWidth) ? null : 100,
+      leading: (MediaQuery.of(context).size.width < kWideScreenWidth)
+          ? null
+          : const Padding(
+              padding: EdgeInsets.all(10),
+              child: Text(''),
+            ),
       title: (MediaQuery.of(context).size.width < kWideScreenWidth)
           ? null
           : Align(
@@ -61,7 +50,16 @@ class AdminAppBar {
                       Navigator.of(context).pushNamed(_tabs[index]);
                     },
                   ))),
-      actions: const [ThemeIconButton(), SignOutButton()],
+      actions: [
+        const ThemeIconButton(),
+        IconButton(
+            onPressed: () {
+              ref.read(isLoggedIn.notifier).value = false;
+              FirebaseAuth.instance.signOut();
+              // print("Signed out");
+            },
+            icon: const Icon(Icons.exit_to_app))
+      ],
     );
   }
 }
@@ -81,16 +79,4 @@ class ThemeIconButton extends ConsumerWidget {
             ? Icons.nightlight
             : Icons.nightlight_outlined));
   }
-}
-
-class SignOutButton extends ConsumerWidget {
-  const SignOutButton({super.key});
-
-  @override
-  Widget build(BuildContext context, WidgetRef ref) => IconButton(
-      onPressed: () {
-        ref.read(isLoggedIn.notifier).value = false;
-        FirebaseAuth.instance.signOut();
-      },
-      icon: const Icon(Icons.exit_to_app));
 }

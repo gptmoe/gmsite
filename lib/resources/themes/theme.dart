@@ -45,7 +45,8 @@ class LoginStyle {
       fontSize: 18.0, color: Colors.black, fontWeight: FontWeight.w500);
   static TextStyle titleStyle =
       const TextStyle(fontWeight: FontWeight.bold, fontSize: 24);
-  static TextStyle linkStyle = const TextStyle(fontSize: 18, color: Colors.blueGrey);
+  static TextStyle linkStyle =
+      const TextStyle(fontSize: 18, color: Colors.blueGrey);
   static BoxDecoration containerStyle = const BoxDecoration(
       border: Border(
           right: BorderSide(

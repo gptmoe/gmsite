@@ -1,8 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:gptmoe/providers/firestore.dart';
-import 'package:gptmoe/state/generic_state_notifier.dart';
+import 'package:gptmoe/core/utils/state/generic_state_notifier.dart';
+
+import '../../../core/providers/firestore.dart';
 
 class DocFieldDropDown extends ConsumerWidget {
   final DocumentReference docRef;

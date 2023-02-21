@@ -106,7 +106,6 @@ class DocFieldTextEditState2 extends ConsumerState<DocFieldTextEdit2> {
   }
 }
 
-
 // class DocFieldTextEdit extends ConsumerStatefulWidget {
 //   final DocumentReference docRef;
 //   final String field;
@@ -218,7 +217,7 @@ class DocFieldTextEditState2 extends ConsumerState<DocFieldTextEdit2> {
 //   }
 // }
 
-// /// 
+// ///
 // /// Version of textedit without delayed saving
 // ///
 // // class DocFieldTextEdit extends ConsumerWidget {

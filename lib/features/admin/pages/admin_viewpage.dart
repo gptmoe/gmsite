@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
-import 'admin/user_details_page.dart';
-import 'admin/users_page.dart';
+import 'package:gptmoe/features/admin/pages/user_details_page.dart';
+import 'package:gptmoe/features/admin/pages/users_page.dart';
 
 //Accessed by clicking workaround button on login page for time being
 class AdminViewWidget extends ConsumerWidget {
@@ -31,7 +30,8 @@ class AdminViewWidget extends ConsumerWidget {
           // print('onGenerateRoute: ${settings}');
           // if (settings.name == '/' || settings.name == 'search') {
           if (settings.name == '/' || settings.name == 'clients') {
-            return PageRouteBuilder(pageBuilder: (_, __, ___) => const UsersPage());
+            return PageRouteBuilder(
+                pageBuilder: (_, __, ___) => const UsersPage());
           } else if (settings.name == UserDetailsPage.routeName) {
             return PageRouteBuilder(pageBuilder: (_, __, ___) {
               //print('args: ${ModalRoute.of(context)!.settings}');

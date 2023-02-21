@@ -1,9 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:gptmoe/admin_viewpage.dart';
-import 'package:gptmoe/providers/firestore.dart';
-import 'package:gptmoe/user_viewpage.dart';
+import 'package:gptmoe/features/admin/pages/admin_viewpage.dart';
+import 'package:gptmoe/features/admin/pages/user_viewpage.dart';
+
+import '../../../core/providers/firestore.dart';
 
 class ChooseUserViewWidget extends ConsumerWidget {
   const ChooseUserViewWidget({super.key});
