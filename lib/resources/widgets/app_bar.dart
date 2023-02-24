@@ -1,9 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:gptmoe/main.dart';
 import 'package:gptmoe/core/utils/state/theme_state_notifier.dart';
 import 'package:gptmoe/core/utils/date_utils.dart';
+
+import '../../features/home/providers/home_page_provider.dart';
 
 class MyAppBar {
   static final List<String> _tabs = [
@@ -54,7 +55,7 @@ class MyAppBar {
         const ThemeIconButton(),
         IconButton(
             onPressed: () {
-              ref.read(isLoggedIn.notifier).value = false;
+              ref.read(isLoggedInProvider.notifier).value = false;
               FirebaseAuth.instance.signOut();
               // print("Signed out");
             },
