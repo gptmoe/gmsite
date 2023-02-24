@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:gptmoe/features/chat/pages/user_message_item.dart';
 import 'package:jiffy/jiffy.dart';
 import 'package:gptmoe/core/utils/state/generic_state_notifier.dart';
 
 import '../../../core/providers/firestore.dart';
+import 'user_message_item.dart';
 
 final sortStateNotifierProvider =
     StateNotifierProvider<GenericStateNotifier<String?>, String?>(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gptmoe/features/chat/pages/user_messages_page.dart';
+
+import '../../features/home/pages/home_page.dart';
 
 class TheDrawer {
   static Widget buildDrawer(BuildContext context) {
@@ -20,7 +21,7 @@ class TheDrawer {
                 Navigator.of(context).pop();
                 Navigator.push(context, MaterialPageRoute(
                   builder: (context) {
-                    return UserMessagesPage();
+                    return const HomePage();
                   },
                 ));
               }),

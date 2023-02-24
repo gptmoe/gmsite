@@ -1,9 +1,10 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:gptmoe/main.dart';
-import 'package:gptmoe/core/utils/state/theme_state_notifier.dart';
 import 'package:gptmoe/core/utils/date_utils.dart';
+
+import '../../../core/utils/state/theme_state_notifier.dart';
+import '../../home/providers/home_page_provider.dart';
 
 class AdminAppBar {
   static final List<String> _tabs = [
@@ -89,7 +90,7 @@ class SignOutButton extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) => IconButton(
       onPressed: () {
-        ref.read(isLoggedIn.notifier).value = false;
+        ref.read(isLoggedInProvider.notifier).value = false;
         FirebaseAuth.instance.signOut();
       },
       icon: const Icon(Icons.exit_to_app));
