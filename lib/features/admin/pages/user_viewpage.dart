@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:gptmoe/features/chat/pages/user_messages_page.dart';
+
+import '../../chat/pages/users_page.dart';
 
 class UserViewWidget extends StatelessWidget {
   const UserViewWidget({super.key});
@@ -15,7 +16,8 @@ class UserViewWidget extends StatelessWidget {
             // if (settings.name == '/' || settings.name == 'search') {
             if (settings.name == '/' || settings.name == 'convo') {
               return PageRouteBuilder(
-                  pageBuilder: (_, __, ___) => UserMessagesPage());
+                pageBuilder: (_, __, ___) => const UsersPage(),
+              );
             } else {
               throw 'no page to show';
             }

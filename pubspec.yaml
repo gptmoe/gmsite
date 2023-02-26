@@ -47,6 +47,12 @@ dependencies:
   flutter_firebase_auth:
     git: 
       url: https://github.com/amlcloud/flutter-firebase-auth.git
+  flutter_firebase_chat_core: ^1.6.4
+  flutter_chat_ui: ^1.6.6
+  flutter_chat_types: ^3.6.0
+  uuid: ^3.0.7
+  faker: ^2.1.0
+  chat_gpt_sdk: ^2.0.0
 
 dev_dependencies:
   flutter_test:
