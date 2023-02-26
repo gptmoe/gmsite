@@ -11,7 +11,7 @@ String extractConversation(String conversation) {
         "text": "hi"
       ]
     }
-    CONVERSATION (in reverse):
+    CONVERSATION
     $conversation
     Copyable JSON format with tags for each principles (make sure can the JSON format is valid):
     """;

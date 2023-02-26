@@ -105,7 +105,7 @@ class ChatGptService {
         final collection = await tagCollectionRef.get();
 
         for (var doc in collection.docs) {
-          principleStringify = '$principles${doc.id} at ${doc.data()}\n';
+          principleStringify = '${doc.id} at ${doc.data()}\n';
         }
       }
     }
