@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "911314559713",
+    "project_id": "gptmoe-2259e",
+    "storage_bucket": "gptmoe-2259e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:911314559713:android:41bfcae17d9bee08ed4da0",
+        "android_client_info": {
+          "package_name": "com.gptmoe.gmsite"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "911314559713-smgp8gglb3c8aj5neufn4big747jd9p0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCoVUpgxlIsl1etSdnC_tEl2uzAVeQ7izw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "911314559713-smgp8gglb3c8aj5neufn4big747jd9p0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
