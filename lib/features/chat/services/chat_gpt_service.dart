@@ -20,6 +20,15 @@ class ChatGptService {
     isLogger: true,
   );
 
+  /// Sends a reply message from the GPT-3 chatbot to the specified room ID in Firebase.
+  ///
+  /// Given a recent message and a list of all messages in the room, the method will extract
+  /// principles from the last two conversations, generate a prompt for the GPT-3 API using
+  /// the extracted principles, and send the prompt to the API to generate a response. The
+  /// response is then stored in Firestore and returned.
+  ///
+  /// Notes: This method will extract principles from the last two conversations and save them to
+  /// Firestore for future use.
   static void sendReplyMessageFromChatGpt({
     required String roomId,
     required String recentMessage,
