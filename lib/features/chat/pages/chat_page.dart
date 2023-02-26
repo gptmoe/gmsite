@@ -46,14 +46,21 @@ class _ChatPageState extends State<ChatPage> {
           builder: (context, snapshot) => StreamBuilder<List<types.Message>>(
             initialData: const [],
             stream: FirebaseChatCore.instance.messages(snapshot.data!),
-            builder: (context, snapshot) => Chat(
-              messages: snapshot.data ?? [],
-              onPreviewDataFetched: _handlePreviewDataFetched,
-              onSendPressed: _handleSendPressed,
-              user: types.User(
-                id: FirebaseChatCore.instance.firebaseUser?.uid ?? '',
-              ),
-            ),
+            builder: (context, snapshot) {
+              final allMessages = snapshot.data ?? [];
+
+              return Chat(
+                messages: allMessages,
+                onPreviewDataFetched: _handlePreviewDataFetched,
+                onSendPressed: (message) => _handleSendPressed(
+                  message: message,
+                  allMessages: allMessages,
+                ),
+                user: types.User(
+                  id: FirebaseChatCore.instance.firebaseUser?.uid ?? '',
+                ),
+              );
+            },
           ),
         ),
       );
@@ -67,15 +74,19 @@ class _ChatPageState extends State<ChatPage> {
     FirebaseChatCore.instance.updateMessage(updatedMessage, widget.room.id);
   }
 
-  void _handleSendPressed(types.PartialText message) async {
+  void _handleSendPressed({
+    required types.PartialText message,
+    required List<types.Message> allMessages,
+  }) async {
     FirebaseChatCore.instance.sendMessage(
       message,
       widget.room.id,
     );
 
     ChatGptService.sendReplyMessageFromChatGpt(
-      message.text,
-      widget.room.id,
+      roomId: widget.room.id,
+      recentMessage: message.text,
+      allMessages: allMessages,
     );
   }
 }
