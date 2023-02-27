@@ -36,7 +36,6 @@ class RegisterPage extends ConsumerWidget {
                   labelText: 'Email',
                 ),
                 keyboardType: TextInputType.emailAddress,
-                readOnly: state.registering,
                 textCapitalization: TextCapitalization.none,
                 textInputAction: TextInputAction.next,
                 onChanged: registerStateNotifier.setEmail,

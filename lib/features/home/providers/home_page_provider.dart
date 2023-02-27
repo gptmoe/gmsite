@@ -10,17 +10,21 @@ final userProvider = StreamProvider<User?>((ref) {
   return auth.authStateChanges();
 });
 
-final roomsProvider = StreamProvider<List<types.Room>>((ref) {
-  return FirebaseChatCore.instance.rooms();
+final roomsProvider = FutureProvider<List<types.Room>>((ref) {
+  return FirebaseChatCore.instance.rooms().first;
 });
 
-final isHaveRoomProvider =
-    StateNotifierProvider<GenericStateNotifier<bool>, bool>((ref) {
-  final watchRooms = ref.watch(roomsProvider);
-  final rooms = watchRooms.asData?.value;
-  final isRoomExists = rooms != null && rooms.isNotEmpty;
+final isHaveRoomProvider = StateNotifierProvider<GenericStateNotifier<bool>, bool>((ref) {
+  final isLoggedIn = ref.watch(isLoggedInProvider);
+  if (isLoggedIn) {
+    final watchRooms = ref.watch(roomsProvider);
+    final rooms = watchRooms.asData?.value;
+    final isRoomExists = rooms != null && rooms.isNotEmpty;
 
-  return GenericStateNotifier<bool>(isRoomExists);
+    return GenericStateNotifier<bool>(isRoomExists);
+  }
+
+  return GenericStateNotifier<bool>(false);
 });
 
 final authenticationStateProvider = Provider((ref) {
@@ -28,7 +32,6 @@ final authenticationStateProvider = Provider((ref) {
   return user != null;
 });
 
-final isLoggedInProvider =
-    StateNotifierProvider<GenericStateNotifier<bool>, bool>(
+final isLoggedInProvider = StateNotifierProvider<GenericStateNotifier<bool>, bool>(
   (ref) => GenericStateNotifier<bool>(ref.watch(authenticationStateProvider)),
 );
