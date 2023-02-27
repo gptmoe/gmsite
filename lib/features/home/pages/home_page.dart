@@ -12,18 +12,11 @@ class HomePage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final user = ref.watch(userProvider).value;
-
-    if (user == null) {
-      return const NotAuthenticatedSection();
-    }
+    final isLoggedIn = ref.watch(isLoggedInProvider);
 
     ref.listen<bool>(isHaveRoomProvider, (_, isHaveRoom) async {
       if (!isHaveRoom) {
         final navigator = Navigator.of(context);
-
-        // TODO(zharfan104): Make to be not always create user everytime listening this
-        await FirebaseChatCore.instance.createUserInFirestore(chatGptUser);
 
         final room = await FirebaseChatCore.instance.createRoom(chatGptUser);
 
@@ -49,6 +42,10 @@ class HomePage extends ConsumerWidget {
         ),
       );
     });
+
+    if (!isLoggedIn) {
+      return const NotAuthenticatedSection();
+    }
 
     return const Center(
       child: CircularProgressIndicator(),

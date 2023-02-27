@@ -42,7 +42,6 @@ class LoginPage extends ConsumerWidget {
                   ),
                 ),
                 keyboardType: TextInputType.emailAddress,
-                readOnly: state.isLoggingIn,
                 textCapitalization: TextCapitalization.none,
                 textInputAction: TextInputAction.next,
                 onChanged: (value) {
