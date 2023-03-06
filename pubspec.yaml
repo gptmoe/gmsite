@@ -52,7 +52,7 @@ dependencies:
   flutter_chat_types: ^3.6.0
   uuid: ^3.0.7
   faker: ^2.1.0
-  chat_gpt_sdk: ^2.0.0
+  dio: ^4.0.6
 
 dev_dependencies:
   flutter_test:

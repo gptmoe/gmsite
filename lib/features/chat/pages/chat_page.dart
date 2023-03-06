@@ -8,7 +8,9 @@ import 'package:gptmoe/features/home/pages/home_page.dart';
 
 import '../services/chat_gpt_service.dart';
 
-class ChatPage extends StatefulWidget {
+String _apiKey = '';
+
+class ChatPage extends StatelessWidget {
   const ChatPage({
     super.key,
     required this.room,
@@ -16,11 +18,6 @@ class ChatPage extends StatefulWidget {
 
   final types.Room room;
 
-  @override
-  State<ChatPage> createState() => _ChatPageState();
-}
-
-class _ChatPageState extends State<ChatPage> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
@@ -41,8 +38,8 @@ class _ChatPageState extends State<ChatPage> {
           ),
         ),
         body: StreamBuilder<types.Room>(
-          initialData: widget.room,
-          stream: FirebaseChatCore.instance.room(widget.room.id),
+          initialData: room,
+          stream: FirebaseChatCore.instance.room(room.id),
           builder: (context, snapshot) => StreamBuilder<List<types.Message>>(
             initialData: const [],
             stream: FirebaseChatCore.instance.messages(snapshot.data!),
@@ -53,6 +50,7 @@ class _ChatPageState extends State<ChatPage> {
                 messages: allMessages,
                 onPreviewDataFetched: _handlePreviewDataFetched,
                 onSendPressed: (message) => _handleSendPressed(
+                  context,
                   message: message,
                   allMessages: allMessages,
                 ),
@@ -71,22 +69,91 @@ class _ChatPageState extends State<ChatPage> {
   ) {
     final updatedMessage = message.copyWith(previewData: previewData);
 
-    FirebaseChatCore.instance.updateMessage(updatedMessage, widget.room.id);
+    FirebaseChatCore.instance.updateMessage(updatedMessage, room.id);
   }
 
-  void _handleSendPressed({
+  void _handleSendPressed(
+    BuildContext context, {
     required types.PartialText message,
     required List<types.Message> allMessages,
   }) async {
-    FirebaseChatCore.instance.sendMessage(
-      message,
-      widget.room.id,
-    );
+    if (_apiKey.isEmpty) {
+      final apiKey = await _showApiKeyBottomSheet(context);
+      if (apiKey == null || apiKey.isEmpty) {
+        return;
+      }
+      _apiKey = apiKey;
+    }
 
-    ChatGptService.sendReplyMessageFromChatGpt(
-      roomId: widget.room.id,
-      recentMessage: message.text,
-      allMessages: allMessages,
+    try {
+      FirebaseChatCore.instance.sendMessage(
+        message,
+        room.id,
+      );
+
+      await ChatGptService.sendReplyMessageFromChatGpt(
+        roomId: room.id,
+        recentMessage: message.text,
+        allMessages: allMessages,
+        openApiKey: _apiKey,
+      );
+      // TODO(zharfan104): Handle specific error
+    } catch (_) {
+      _apiKey = '';
+      // ignore: use_build_context_synchronously
+      await _showApiKeyBottomSheet(context, inputLabel: 'Invalid API Key, please input again');
+    }
+  }
+
+  Future<String?> _showApiKeyBottomSheet(
+    BuildContext context, {
+    String inputLabel = 'Input OpenAI API Key',
+  }) async {
+    final apiKeyController = TextEditingController();
+    final formKey = GlobalKey<FormState>();
+
+    return await showModalBottomSheet<String?>(
+      context: context,
+      isScrollControlled: true,
+      builder: (BuildContext context) => Padding(
+        padding: EdgeInsets.only(
+          bottom: MediaQuery.of(context).viewInsets.bottom,
+        ),
+        child: Form(
+          key: formKey,
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                TextFormField(
+                  controller: apiKeyController,
+                  decoration: InputDecoration(
+                    labelText: inputLabel,
+                    border: const OutlineInputBorder(),
+                  ),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter API key';
+                    }
+                    return null;
+                  },
+                ),
+                const SizedBox(height: 16),
+                ElevatedButton(
+                  onPressed: () {
+                    if (formKey.currentState!.validate()) {
+                      Navigator.pop(context, apiKeyController.text.trim());
+                    }
+                  },
+                  child: const Text('Save'),
+                ),
+              ],
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
